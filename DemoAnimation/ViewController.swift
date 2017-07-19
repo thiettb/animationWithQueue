@@ -16,54 +16,67 @@ class ViewController: UIViewController {
                                   CGPoint(x: 30, y: 300),
                                   CGPoint(x: 60, y: 400),
                                   CGPoint(x: 80, y: 500),]
-    var queue = Queue<CGPoint>()
+    var queue = Queue<AnyObject>()
+    var anyArray : [AnyObject] = [CGPoint(x:15, y: 100) as AnyObject,
+                                  UIColor.red as AnyObject,
+                                  CGAffineTransform(rotationAngle: 90) as AnyObject
+                                  
+                                  ]
+    var dynamic = Dynamic()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.disk = UIView(frame: CGRect(x: 10, y: 100, width: 100, height: 24))
         self.disk.backgroundColor = UIColor.blue
         self.view.addSubview(self.disk)
+        queue.enqueue(CGPoint(x: 90, y: 100) as AnyObject)
+        queue.enqueue(UIColor.red as AnyObject)
+        queue.enqueue(CGAffineTransform(rotationAngle: CGFloat(M_PI/2)) as AnyObject)
         
-        queue.enqueue(CGPoint(x: 15, y: 100))
-        queue.enqueue(CGPoint(x: 25, y: 100))
-        queue.enqueue(CGPoint(x: 35, y: 200))
-        queue.enqueue(CGPoint(x: 45, y: 300))
-        queue.enqueue(CGPoint(x: 65, y: 500))
-        queue.enqueue(CGPoint(x: 75, y: 100))
-        queue.enqueue(CGPoint(x: 85, y: 300))
-        queue.dequeue()
-        print(queue)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
 //        self.animate(view: self.disk, index: 0)
-        self.animateQueue(view: self.disk, index: 0)
+        self.animateQueue(view: self.disk)
     }
     
-    func animate(view: UIView, index: Int){
-        if index < pointArray.count{
-        UIView.animate(withDuration: 1.0, animations: {
-            self.disk.center = self.pointArray[index]
-        }) { (finished) in
-            self.animate(view: view, index: index + 1)
-        }
-        }else{
-            print("done")
-        }
-    }
+//    func animate(view: UIView, index: Int){
+//        if index < pointArray.count{
+//        UIView.animate(withDuration: 1.0, animations: {
+//            self.disk.center = self.pointArray[index]
+//        }) { (finished) in
+//            self.animate(view: view, index: index + 1)
+//        }
+//        }else{
+//            print("done")
+//        }
+//    }
     
-    func animateQueue(view: UIView, index : Int){
-        if index < queue.count{
-        UIView.animate(withDuration: 1.0, animations: {
-            self.disk.center = self.queue.dequeue()!
-        }) { (finished) in
-            self.animate(view: view, index: index + 1)
+    func animateQueue(view: UIView){
+        print(queue.count)
+        print(index)
+        if (queue.count > 0){
+        UIView.animate(withDuration: 2.0, animations: {
+            let point : AnyObject = self.queue.dequeue() as AnyObject
+            print(point)
+            if point is CGPoint{
+                view.center = point as! CGPoint
             }
-        }else{
-            print("done")
+            if point is UIColor{
+                view.backgroundColor = point as! UIColor
+            }
+            if point is CGAffineTransform{
+                view.transform = point as! CGAffineTransform
+            }
+            
+        }) { (finished) in
+            self.animateQueue(view: view)
+            }
+        
+        }else {
+        print("done")
         }
-    
     }
     
 
