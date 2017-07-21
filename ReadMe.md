@@ -56,7 +56,7 @@ func animateQueue(view:UIView){
         if item is CGAffineTransform{
             view.transform= item as! CGAffineTransform
         }
-        }) { (finished) in
+        }){ (finished) in
         self.animateQueue(view: view)
     }
     }else{
