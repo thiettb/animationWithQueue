@@ -1,6 +1,6 @@
 # **Animation with Queue**
 
-Animation kết hợp với queue để hoạt hình đa cảnh trong UIVie
+Animation kết hợp với queue để hoạt hình đa cảnh trong UIView
 
 **Cấu trúc của Queue**
 
@@ -48,18 +48,17 @@ func animateQueue(view:UIView){
     print(index)
     if(queue.count>0){
         UIView.animate(withDuration:2.0, animations: {
-        letpoint :AnyObject=self.queue.dequeue()asAnyObject
-        print(point)
-        ifpointisCGPoint{
-            view.center= pointas!CGPoint
+        let point :AnyObject=self.queue.dequeue() as AnyObject
+        if point is CGPoint{
+            view.center= point as! CGPoint
         }
-        ifpointisUIColor{
-            view.backgroundColor= pointas!UIColor
+        if point is UIColor{
+            view.backgroundColor= point as! UIColor
         }
-        ifpointisCGAffineTransform{
-            view.transform= pointas!CGAffineTransform
+        if point is CGAffineTransform{
+            view.transform= point as! CGAffineTransform
         }
-        }) { (finished)in
+        }) { (finished) in
         self.animateQueue(view: view)
     }
     }else{
