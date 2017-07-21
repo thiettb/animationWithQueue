@@ -11,24 +11,16 @@ import UIKit
 class ViewController: UIViewController {
 
     var disk: UIView! = nil
-    var pointArray : [CGPoint] = [CGPoint(x: 15, y: 100),
-                                  CGPoint(x: 20, y: 200),
-                                  CGPoint(x: 30, y: 300),
-                                  CGPoint(x: 60, y: 400),
-                                  CGPoint(x: 80, y: 500),]
     var queue = Queue<AnyObject>()
-    var anyArray : [AnyObject] = [CGPoint(x:15, y: 100) as AnyObject,
-                                  UIColor.red as AnyObject,
-                                  CGAffineTransform(rotationAngle: 90) as AnyObject
-                                  
-                                  ]
-    var dynamic = Dynamic()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.disk = UIView(frame: CGRect(x: 10, y: 100, width: 100, height: 24))
         self.disk.backgroundColor = UIColor.blue
         self.view.addSubview(self.disk)
+        
+        // add to queue
         queue.enqueue(CGPoint(x: 90, y: 100) as AnyObject)
         queue.enqueue(UIColor.red as AnyObject)
         queue.enqueue(CGAffineTransform(rotationAngle: CGFloat(M_PI/2)) as AnyObject)
