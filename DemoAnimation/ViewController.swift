@@ -46,20 +46,18 @@ class ViewController: UIViewController {
 //    }
     
     func animateQueue(view: UIView){
-        print(queue.count)
-        print(index)
         if (queue.count > 0){
         UIView.animate(withDuration: 2.0, animations: {
             let item : AnyObject = self.queue.dequeue() as AnyObject
-            print(point)
+            print(item)
             if item is CGPoint{
-                view.center = point as! CGPoint
+                view.center = item as! CGPoint
             }
             if item is UIColor{
-                view.backgroundColor = point as! UIColor
+                view.backgroundColor = item as! UIColor
             }
             if item is CGAffineTransform{
-                view.transform = point as! CGAffineTransform
+                view.transform = item as! CGAffineTransform
             }
             
         }) { (finished) in
