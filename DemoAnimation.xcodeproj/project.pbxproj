@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860A74621F250A8A0044CEC6 /* AnimationWithQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A74611F250A8A0044CEC6 /* AnimationWithQueue.swift */; };
 		86BE5E391F1C6BFC0094C169 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE5E381F1C6BFC0094C169 /* AppDelegate.swift */; };
 		86BE5E3B1F1C6BFC0094C169 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE5E3A1F1C6BFC0094C169 /* ViewController.swift */; };
 		86BE5E3E1F1C6BFC0094C169 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BE5E3C1F1C6BFC0094C169 /* Main.storyboard */; };
 		86BE5E401F1C6BFC0094C169 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86BE5E3F1F1C6BFC0094C169 /* Assets.xcassets */; };
 		86BE5E431F1C6BFC0094C169 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BE5E411F1C6BFC0094C169 /* LaunchScreen.storyboard */; };
 		86E5E6811F1F02F300B69603 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E5E6801F1F02F300B69603 /* Dynamic.swift */; };
+		86E5E6891F21C0F700B69603 /* AnimateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E5E6881F21C0F700B69603 /* AnimateItem.swift */; };
+		86E5E68B1F21E3EE00B69603 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E5E68A1F21E3EE00B69603 /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		860A74611F250A8A0044CEC6 /* AnimationWithQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationWithQueue.swift; sourceTree = "<group>"; };
 		86BE5E351F1C6BFC0094C169 /* DemoAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BE5E381F1C6BFC0094C169 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86BE5E3A1F1C6BFC0094C169 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		86BE5E421F1C6BFC0094C169 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86BE5E441F1C6BFC0094C169 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86E5E6801F1F02F300B69603 /* Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		86E5E6881F21C0F700B69603 /* AnimateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateItem.swift; sourceTree = "<group>"; };
+		86E5E68A1F21E3EE00B69603 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = ../Queue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,9 @@
 			children = (
 				86BE5E381F1C6BFC0094C169 /* AppDelegate.swift */,
 				86BE5E3A1F1C6BFC0094C169 /* ViewController.swift */,
+				86E5E68A1F21E3EE00B69603 /* Queue.swift */,
+				86E5E6881F21C0F700B69603 /* AnimateItem.swift */,
+				860A74611F250A8A0044CEC6 /* AnimationWithQueue.swift */,
 				86BE5E3C1F1C6BFC0094C169 /* Main.storyboard */,
 				86BE5E3F1F1C6BFC0094C169 /* Assets.xcassets */,
 				86BE5E411F1C6BFC0094C169 /* LaunchScreen.storyboard */,
@@ -140,8 +149,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86E5E68B1F21E3EE00B69603 /* Queue.swift in Sources */,
 				86E5E6811F1F02F300B69603 /* Dynamic.swift in Sources */,
+				860A74621F250A8A0044CEC6 /* AnimationWithQueue.swift in Sources */,
 				86BE5E3B1F1C6BFC0094C169 /* ViewController.swift in Sources */,
+				86E5E6891F21C0F700B69603 /* AnimateItem.swift in Sources */,
 				86BE5E391F1C6BFC0094C169 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

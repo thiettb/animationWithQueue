@@ -8,14 +8,20 @@
 
 import UIKit
 
-class AnimateItem: UIView {
+class AnimateItem: NSObject {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    //Mark:: Property
+    var item : AnyObject
+    var animateTime : CGFloat
+    
+    init(item : AnyObject , time : CGFloat) {
+        self.item = item
+        self.animateTime = time
+        
     }
-    */
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

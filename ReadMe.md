@@ -1,10 +1,14 @@
 # **Animation with Queue**
 
-Animation kết hợp với queue để hoạt hình đa cảnh trong UIView
+Animation kết hợp với Queue để hoạt hình đa cảnh trong UIView.Ở bài này mình muốn dễ quản lý cũng như để dễ tái sử dụng thì mình chia ra 3 class nhỏ:
 
-**Cấu trúc của Queue**
+* Cấu trúc của Queue
+* Class quản lý những hoạt cảnh và Timer của nó
+* Class thực thi hành động 
 
-```
+## **Cấu trúc của Queue**
+
+```Swift
 public struct Queue<T> {
     fileprivate var array = [T]()
 
@@ -34,34 +38,63 @@ public struct Queue<T> {
 }
 ```
 
-**Khai báo 1 Queue với AnyObject**
+## Tạo 1 lớp để lưu trữ các hành động mà muốn hoạt cảnh và timer của nó
 
-```
-var queue = Queue<AnyObject>()
-```
+```Swift
+class AnimateItem: NSObject {
 
-**Áp dụng đệ quy để giải quyết bài toán**
+    //Mark:: Property
+    var item : AnyObject
+    var animateTime : CGFloat
 
-```
-func animateQueue(view:UIView){
-    if(queue.count>0){
-        UIView.animate(withDuration:2.0, animations: {
-        let item :AnyObject=self.queue.dequeue() as AnyObject
-        if item is CGPoint{
-            view.center= item as! CGPoint
-        }
-        if item is UIColor{
-            view.backgroundColor= item as! UIColor
-        }
-        if item is CGAffineTransform{
-            view.transform= item as! CGAffineTransform
-        }
-        }){ (finished) in
-        self.animateQueue(view: view)
+    init(item : AnyObject , time : CGFloat) {
+        self.item = item
+        self.animateTime = time
+
     }
-    }else{
-        print("done")
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+```
+
+## Tạo 1 lớp thực thi tất cả hành động sử dụng đệ quy
+
+```Swift
+class AnimationWithQueue: UIView {
+    //Mark: Property
+    var queue = Queue<AnimateItem>()
+
+    init(frame: CGRect ,queue: Queue<AnimateItem>) {
+        self.queue = queue
+        super.init(frame: frame)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    //Mark: Function
+    func animateQueue(view: UIView){
+        if (queue.count > 0){
+            let dequeue = self.queue.dequeue()
+            let item : AnyObject = dequeue?.item as AnyObject
+            let time : CGFloat = (dequeue?.animateTime)! as CGFloat
+            UIView.animate(withDuration: TimeInterval(time), animations: {
+                if item is CGPoint{
+                    view.center = item as! CGPoint
+                }
+                if item is UIColor{
+                    view.backgroundColor = item as? UIColor
+                }
+                if item is CGAffineTransform{
+                    view.transform = item as! CGAffineTransform
+                }
+            }, completion: { (finished) in
+                self.animateQueue(view: view)
+            })
         }
+    }   
 }
 ```
 
